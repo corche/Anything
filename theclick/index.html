@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="L">눌러서 게임 시작하기</button>
+    <div  id="rank">최고기록 : <span id="new">0</span>점</div>
+    <div id="score">0</div>
+    <div id="time">10</div>
+    <input id="time2" type="number" placeholder="원하는 초 입력" value="10" >
+    <style>
+        body{margin:0; &>*{user-select: none;}}
+        #L{
+            position: absolute;
+            top: calc(50vh - 32px);
+            left: calc(50vw - 130px);
+            outline: none;
+            padding: 16px;
+            border-radius: 10px;
+            border: none;
+            background-color: tomato;
+            transition: .3s;
+            font-size: 1.5em;
+            z-index: 1;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #time2{
+            padding: 16px;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            background: #d3d3d3;
+            width: 95px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 60vh;
+            left: 50vw;
+        }
+
+        #score{
+            font-size: 10em;
+            font-weight: bold;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        #rank{
+            font-size: 1.8em;
+            transform: translateY(50%);
+            font-weight: bold;
+            text-align: center;
+            opacity: 0.5;
+        }
+
+        #time{
+            position: absolute;
+            bottom: 100px;
+            font-size: 5em;
+            font-weight: bold;
+            width: 100vw;
+            text-align: center;
+            opacity: 0.5;
+        }
+    </style>
+    <script>
+        s = 0
+
+        nowCount = false
+
+        h = document.getElementById("L") //버튼
+        ss = document.getElementById("score") //텍스트
+        nr = document.getElementById("new") //텍스트(최고점수)
+        tt = document.getElementById("time") //텍스트
+        tt2 = document.getElementById("time2") //인풋
+
+        tt2.addEventListener('input', function(){
+            tt.innerText = Number(tt2.value)
+        })
+
+        window.addEventListener('DOMContentLoaded', ()=>{nr.innerText = localStorage.getItem('rank')})
+
+        start = function(){
+            h.style.transition = '.3s'
+            localStorage.setItem('rank', s)
+            s = 0
+            h.removeEventListener('click', start)
+            h.addEventListener('click', l)
+            l();
+            nowCount = true;
+            tt2.style.visibility = 'hidden';
+        }
+
+        end = function(){
+            localStorage.setItem('rank', s)
+            
+            nr.innerText = localStorage.getItem('rank')
+
+            h.style.transition = '0s'
+
+            h.innerText = "눌러서 게임 시작하기"
+            h.style.background = 'tomato'
+
+            h.style.top = 'calc(50vh - 32px)'
+            h.style.left = 'calc(50vw - 130px)'
+
+            tt2.style.visibility = 'visible';
+
+            h.removeEventListener('click', l)
+            h.addEventListener('click', start)
+
+            tt.innerText = Number(tt2.value)
+        }
+
+        l = function(){
+            h.innerText = "클릭!"
+            h.style.background = 'skyblue'
+            console.log("L")
+            h.style.top = `${Math.round(Math.random() * (window.innerHeight - h.offsetHeight) )}px`
+            h.style.left = `${Math.round(Math.random() * (window.innerWidth - h.offsetWidth) )}px`
+            
+            s++
+
+            score.innerText = s
+        }
+
+        //설정
+        h.removeEventListener('click', l)
+        h.addEventListener('click', start)
+
+        //카운터
+        iv = function(){
+            console.log("실행")
+            if(!nowCount) return;
+
+            tt.innerText = `${Number(tt.innerText) -1}`
+
+            if(tt.innerText == 0){
+                nowCount = false;
+                end();
+            }
+        }
+
+        setInterval(iv, 1000)
+
+        clearInterval(iv)
+    </script>
+</body>
+</html>

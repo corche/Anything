@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width`, initial-scale=1.0">
+    <title>Wait, what??</title>
+</head>
+<body>
+    <img src="https://media1.tenor.com/m/Jc9jT66AJRwAAAAd/chipi-chipi-chapa-chapa.gif" alt="chip chipi-chipi-chapa-chapa" id="chipi" >
+    <img src="https://media1.tenor.com/m/NVwxxoyoyGgAAAAd/racoon-pedro.gif" alt="racoon-pedro" id="pedro" >
+    <a href="https://www.youtube.com/watch?v=ZVC3hWDR13k" target="_blank"><img src="https://c.tenor.com/X1uVE7nOt3oAAAAC/tenor.gif" alt="TRIGGEREEEEEEEEEED" id="triggered"></a>
+    <h1 id="wtf1">Pedro Pedro Pedro</h1>
+    <h1 id="wtf2">Chipi Chipi Chapa Chapa</h1>
+    <h1 id="wtf3">TRIGGEREEEEEEEEEED!!!!!!!!!!!!!!</h1>
+</body>
+<style>
+    body{
+        background-image: url('https://media.tenor.com/ag481yU1Fq8AAAAi/pepe-hooray.gif');
+        background-size: 100px;
+        overflow: hidden;
+    }
+    #chipi, #pedro, #triggered{transition: 0.1s; top: 0; left: 0;position: absolute;}
+    #wtf1, #wtf2, #wtf3{transition: 0.5s; top: 0; left: 0;position: absolute; font-size: 5em; transform: translate(-50%, -50%);}
+    </style>
+<script>
+    let a = document.getElementById("chipi")
+    let b = document.getElementById("pedro")
+    let c = document.getElementById("triggered")
+
+    let a1 = document.getElementById("wtf1")
+    let b1 = document.getElementById("wtf2")
+    let c1 = document.getElementById("wtf3")
+    
+    let cr = 255;
+    let cg = 0;
+    let cb = 0;
+    
+    let cr1 = 255, cg1 = 0, cb1 = 0
+    let cr2 = 0, cg2 = 0, cb2 = 0
+    let cr3 = 0, cg3 = 0, cb3 = 0
+    
+    const tp = () => {
+        a.style.left = `${Math.random(window.innerWidth)*(window.innerWidth-a.width)}px`
+        a.style.top = `${Math.random(window.innerHeight)*(window.innerHeight-a.height)}px`
+
+        b.style.left = `${Math.random(window.innerWidth)*(window.innerWidth-b.width)}px`
+        b.style.top = `${Math.random(window.innerHeight)*(window.innerHeight-b.height)}px`
+
+        c.style.left = `${Math.random(window.innerWidth)*(window.innerWidth-c.width)}px`
+        c.style.top = `${Math.random(window.innerHeight)*(window.innerHeight-c.height)}px`
+    }
+
+    const tp2 =() =>{
+a1.style.left = `${Math.random(window.innerWidth)*window.innerWidth}px`
+a1.style.top = `${Math.random(window.innerHeight)*window.innerHeight}px`
+
+b1.style.left = `${Math.random(window.innerWidth)*window.innerWidth}px`
+b1.style.top = `${Math.random(window.innerHeight)*window.innerHeight}px`
+
+c1.style.left = `${Math.random(window.innerWidth)*window.innerWidth}px`
+c1.style.top = `${Math.random(window.innerHeight)*window.innerHeight}px`
+}
+
+    const tColor = () => {
+        if(cr1 == 255 && cg1 == 0 && cb1 == 255){
+            cr1 = 255; cr2 = 0; cr3 = 0;
+            cg1 = 0; cg2 = 255; cb3 = 0;
+            cb1 = 0; cb2 = 0; cg3 = 255;
+        }else if(cr1 == 255 && cg1 == 0 && cb1 == 0){
+            cr1 = 0; cr2 = 0; cr3 = 255;
+            cg1 = 255; cg2 = 0; cb3 = 255;
+            cb1 = 0; cb2 = 255; cg3 = 0;
+        }else if(cr1 == 0 && cg1 == 255 && cb1 == 0){
+            cr1 = 0; cr2 = 255; cr3 = 0;
+            cg1 = 0; cg2 = 255; cb3 = 255;
+            cb1 = 255; cb2 = 0; cg3 = 255;
+        }else if(cr1 == 0 && cg1 == 0 && cb1 == 255){
+            cr1 = 255; cr2 = 0; cr3 = 255;
+            cg1 = 255; cg2 = 255; cb3 = 0;
+            cb1 = 0; cb2 = 255; cg3 = 255;
+        }else if(cr1 == 255 && cg1 == 255 && cb1 == 0){
+            cr1 = 0; cr2 = 255; cr3 = 255;
+            cg1 = 255; cg2 = 0; cb3 = 0;
+            cb1 = 255; cb2 = 255; cg3 = 0;
+        }else if(cr1 == 0 && cg1 == 255 && cb1 == 255){
+            cr1 = 255; cr2 = 255; cr3 = 0;
+            cg1 = 0; cg2 = 0; cb3 = 255;
+            cb1 = 255; cb2 = 0; cg3 = 0;
+        }else{
+            console.warn(`${cr1}, ${cg1}, ${cb1}\n${cr2}, ${cg2}, ${cb2}\n${cr3}, ${cg3}, ${cb3}\n`);
+        }
+
+
+        a1.style.color = `rgba(${cr1}, ${cg1}, ${cb1}, 1)`;
+        b1.style.color = `rgba(${cr2}, ${cg2}, ${cb2}, 1)`;
+        c1.style.color = `rgba(${cr3}, ${cg3}, ${cb3}, 1)`;
+    }
+
+    const color = () => {
+        if (cr == 255 && cb == 0){
+				if (cg != 255 && cr == 255){
+					cg += 1
+				}
+			}
+			if (cg == 255 && cr == 0){
+				if (cb != 255 && cg == 255){
+					cb += 1
+				}
+			}
+			if (cb == 255 && cg == 0){
+				if (cr != 255 && cb == 255){
+					cr += 1
+				}
+			}
+			if ( cr != 0 && cg == 255 && cb == 0){
+				cr -= 1
+			}
+			if ( cr == 0 && cg != 0 && cb == 255){
+				cg -= 1
+			}
+			if ( cr == 255 && cg == 0 && cb != 0){
+				cb -= 1
+			}
+            
+        document.querySelector("body").style.backgroundColor = `rgba(${cr}, ${cg}, ${cb}, 0.3)`;
+    }
+
+    setInterval(tp, 100)
+
+    setInterval(tp2, 300)
+
+    setInterval(color, 1)
+
+    setInterval(tColor, 500)
+
+</script>
+</html>

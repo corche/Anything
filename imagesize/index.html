@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<title>이미지 리사이즈 & ZIP 다운로드</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h2>이미지 리사이즈 후 ZIP 다운로드</h2>
+			<input type="file" id="imageInput" accept="image/*" />
+			<input
+				type="text"
+				id="sizeInput"
+				placeholder="크기 입력 (예: 32,64,128)"
+			/>
+			<button onclick="resizeAndZip()">리사이즈 후 ZIP 다운로드</button>
+
+			<div id="preview"></div>
+		</div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
